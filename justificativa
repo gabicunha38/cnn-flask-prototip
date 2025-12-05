@@ -1,0 +1,46 @@
+1. Introdução
+O objetivo desta etapa foi preparar um conjunto de imagens médicas simuladas para uso em modelos de redes neurais convolucionais (CNN). O pré-processamento garante que os dados estejam padronizados, organizados e prontos para o treinamento, validação e teste, reduzindo ruídos e aumentando a confiabilidade dos resultados.
+
+2. Estruturação do Dataset
+As imagens foram organizadas em uma pasta raiz denominada images/, contendo subpastas correspondentes às classes (ex.: classe1/, classe2/). Essa estrutura é fundamental para que bibliotecas como Keras/TensorFlow possam identificar automaticamente os rótulos durante o carregamento dos dados.
+
+Justificativa: manter subpastas por classe simplifica o pipeline e evita a necessidade de arquivos auxiliares de anotação.
+
+3. Redimensionamento
+Todas as imagens foram redimensionadas para 224×224 pixels. Esse tamanho foi escolhido por ser compatível com arquiteturas pré-treinadas populares (VGG16, ResNet) e por equilibrar qualidade visual com custo computacional.
+
+Justificativa: imagens maiores aumentariam o tempo de treinamento sem ganhos significativos; imagens menores poderiam perder detalhes relevantes.
+
+4. Normalização
+Os valores dos pixels foram normalizados para o intervalo [0,1].
+
+Justificativa: normalizar acelera a convergência do modelo e evita problemas de escala entre diferentes imagens. Essa prática é padrão em visão computacional.
+
+5. Conversão de Formato
+Todas as imagens foram convertidas para o formato PNG e para o espaço de cor RGB.
+
+Justificativa: o formato PNG preserva qualidade sem compressão destrutiva, e o espaço RGB garante consistência entre imagens, mesmo quando originais estavam em escala de cinza ou outros formatos.
+
+6. Divisão em Conjuntos
+O dataset foi dividido em três subconjuntos:
+
+Treino (64%) – usado para ajuste dos parâmetros do modelo.
+
+Validação (16%) – usado para monitorar desempenho durante o treino e evitar overfitting.
+
+Teste (20%) – usado para avaliação final e imparcial do modelo.
+
+A divisão foi estratificada, garantindo proporção equilibrada de classes em cada subconjunto.
+
+Justificativa: essa divisão é prática comum em machine learning e assegura que o modelo seja avaliado em dados nunca vistos.
+
+7. Visualização e Auditoria
+Foram geradas amostras visuais de cada classe após o pré-processamento, além de contagens de imagens por classe em cada subconjunto.
+
+Justificativa: essa auditoria permite verificar se o pipeline funcionou corretamente e se não houve perda ou desequilíbrio de dados.
+
+8. Considerações Éticas
+Embora o dataset seja simulado ou público, é importante destacar que em contextos reais de saúde o pré-processamento deve preservar a integridade dos dados e respeitar normas de privacidade. O uso responsável é essencial para garantir confiabilidade e ética na aplicação de inteligência artificial em saúde.
+
+9. Conclusão
+O pipeline de pré-processamento estabeleceu uma base sólida para o treinamento de modelos de CNN. As escolhas feitas — redimensionamento para 224×224, normalização, conversão para PNG/RGB e divisão estratificada — foram guiadas por boas práticas de visão computacional e pela necessidade de eficiência e clareza. Essa preparação garante que os próximos passos (treino e avaliação de modelos) sejam realizados sobre dados consistentes e confiáveis.
